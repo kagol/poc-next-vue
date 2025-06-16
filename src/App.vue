@@ -1,8 +1,24 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import CompanyList from './components/CompanyList.vue'
+import { useNextClient } from '@opentiny/next-vue'
+
+let id: any
+if (sessionStorage.getItem('sessionId')) {
+  id = sessionStorage.getItem('sessionId')
+} else {
+  id = crypto.randomUUID()
+  sessionStorage.setItem('sessionId', id)
+}
+
+const { sessionId } = useNextClient({
+  clientInfo: { name: 'demo-vite-next-vue', version: '1.0.0' },
+  proxyOptions: { url: 'https://agent.icjs.ink/sse', token: '', sessionId: id },
+})
+
 </script>
 
 <template>
+  <p>sessionId: https://agent.icjs.ink/sse?sessionId={{ sessionId }}</p>
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -11,7 +27,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <CompanyList msg="Vite + Vue + @opentiny/next-vue" />
 </template>
 
 <style scoped>

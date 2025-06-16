@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "@opentiny/next-vue": "^0.0.1",
+    "vue": "^3.3.11",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
