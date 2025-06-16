@@ -3,8 +3,6 @@ import { reactive } from 'vue'
 import { useNextServer } from '@opentiny/next-vue'
 import { z } from 'zod'
 
-defineProps<{ msg: string }>()
-
 const { server } = useNextServer({
   serverInfo: { name: 'company-list', version: '1.0.0' }
 })
@@ -99,13 +97,9 @@ const setSelected = (id: string, selected: boolean) => {
     }
   })
 }
-
-// setSelected('2', true)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
   <h3>公司列表</h3>
   <ul>
     <li v-for="company in companyList" :key="company.id">

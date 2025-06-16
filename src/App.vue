@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { version } from 'vue'
 import CompanyList from './components/CompanyList.vue'
 import { useNextClient } from '@opentiny/next-vue'
 
@@ -18,7 +19,6 @@ const { sessionId } = useNextClient({
 </script>
 
 <template>
-  <p>sessionId: https://agent.icjs.ink/sse?sessionId={{ sessionId }}</p>
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -27,7 +27,11 @@ const { sessionId } = useNextClient({
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <CompanyList msg="Vite + Vue + @opentiny/next-vue" />
+  <h1>Vite + Vue + @opentiny/next-vue</h1>
+  <p>Vue version: {{ version }}</p>
+
+  <p>sessionId: https://agent.icjs.ink/sse?sessionId={{ sessionId }}</p>
+  <CompanyList />
 </template>
 
 <style scoped>
